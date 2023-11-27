@@ -21,6 +21,11 @@ namespace ProjetoAnderson2.Controllers
 
         public TopFilmes BuscarUltimosFilmes(int quantidade)
         {
+            if (!_context.Filme.Any())
+            {
+                return new TopFilmes();
+            }
+
             var ultimosFilmes = _context.Filme
                    .OrderByDescending(f => f.Id)
                    .Take(quantidade)
