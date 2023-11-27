@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ProjetoAnderson2.Models.TopFilmes
+
+<div class="text-center">
+    <h1 class="display-4">ÚLTIMOS 10 FILMES</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Filmes![0].Imagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filmes![0].Titulo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Filmes!)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"><img src=".\fotos\@{
+                        @item.Imagem
+ }" width="250" /></a>
+                </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

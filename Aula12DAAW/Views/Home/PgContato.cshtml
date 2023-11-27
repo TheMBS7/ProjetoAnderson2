@@ -1,0 +1,52 @@
+﻿@model ProjetoAnderson2.Models.TopMensagens
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Mensagem</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contatos![0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contatos![0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contatos![0].Assunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contatos![0].Mensagem)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Contatos!)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assunto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensagem)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="DetailsContato" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
