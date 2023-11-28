@@ -28,7 +28,7 @@ namespace ProjetoAnderson2.Controllers
         }
 
         // GET: Contatos/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> DetailsContato(int? id)
         {
             if (id == null || _context.Contato == null)
             {

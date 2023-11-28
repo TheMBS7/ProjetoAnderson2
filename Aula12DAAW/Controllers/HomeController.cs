@@ -18,14 +18,16 @@ namespace ProjetoAnderson2.Controllers
             _context = context;
             _logger = logger;
         }
-
+        public TopFilmes QuandoNulo()
+        {
+            var ultimasMensagens = _context.Filme
+                   .OrderByDescending(f => f.Id)
+                   .ToList();
+            TopFilmes resultado = new TopFilmes { Filmes = ultimasMensagens };
+            return resultado;
+        }
         public TopFilmes BuscarUltimosFilmes(int quantidade)
         {
-            if (!_context.Filme.Any())
-            {
-                return new TopFilmes();
-            }
-
             var ultimosFilmes = _context.Filme
                    .OrderByDescending(f => f.Id)
                    .Take(quantidade)
@@ -36,7 +38,13 @@ namespace ProjetoAnderson2.Controllers
 
         public IActionResult Index()
         {
-            var resultado = BuscarUltimosFilmes(10);
+            TopFilmes resultado;
+            if (!_context.Filme.Any())
+            {
+                resultado = QuandoNulo();
+                return View(resultado);
+            }
+            resultado = BuscarUltimosFilmes(10);
             return View(resultado);
         }
 
