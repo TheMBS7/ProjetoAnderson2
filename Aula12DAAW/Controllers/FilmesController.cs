@@ -212,6 +212,14 @@ namespace ProjetoAnderson2.Controllers
 
             if (ModelState.IsValid)
             {
+                if (!ValidaImagem(anexo))
+                    return View(filme);
+
+                var nome = SalvarArquivo(anexo);
+                filme.Imagem = nome;
+
+                
+                
                 try
                 {
                     _context.Update(filme);
