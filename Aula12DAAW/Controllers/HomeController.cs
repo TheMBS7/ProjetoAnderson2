@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjetoAnderson2.Data;
@@ -61,6 +62,8 @@ namespace ProjetoAnderson2.Controllers
         {
             return View();
         }
+
+        [Authorize]
         public IActionResult PgContato()
         {
             var resultado = OrdenarMensagem();
