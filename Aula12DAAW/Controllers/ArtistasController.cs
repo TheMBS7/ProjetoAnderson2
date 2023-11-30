@@ -179,8 +179,10 @@ namespace ProjetoAnderson2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataDeNascimento,PaisDeNascimento")] Artista artista)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataDeNascimento,PaisDeNascimento,Imagem")] Artista artista, IFormFile anexo)
         {
+            ModelState.Remove("Imagem");
+            
             if (id != artista.Id)
             {
                 return NotFound();
@@ -188,6 +190,12 @@ namespace ProjetoAnderson2.Controllers
 
             if (ModelState.IsValid)
             {
+                if (!ValidaImagem(anexo))
+                    return View(artista);
+
+                var nome = SalvarArquivo(anexo);
+                artista.Imagem = nome;
+
                 try
                 {
                     _context.Update(artista);
