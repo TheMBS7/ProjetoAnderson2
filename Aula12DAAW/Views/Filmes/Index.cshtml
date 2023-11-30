@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Filmes</h1>
 <form asp-controller="Filmes" asp-action="Index" method="get">
     <p>
 
@@ -27,39 +27,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Filmes![0].Imagem)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].CodigoDeBarras)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.Filmes![0].Titulo)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Genero)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Filmes![0].Ano)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Tipo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Preco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].DataAdquirida)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].ValorCusto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Situacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Artista)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Filmes![0].Diretor)
-            </th>
+           
             
             
         </tr>
@@ -70,39 +46,15 @@
             <td>
                 <img src=".\fotos\@{ @item.Imagem }" width="250" />
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoDeBarras)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genero.Nome)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Ano)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataAdquirida)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ValorCusto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Situacao.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Artista.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diretor)
-            </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
